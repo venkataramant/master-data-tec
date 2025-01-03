@@ -9,21 +9,10 @@ import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.sql.SparkSession;
 
+import static lrn.tvr.course.spark.util.LocalUtil.*;
 import scala.Tuple2;
 
 public class SparkCoreApp {
-
-	private static String getFileName(String[] args) {
-		String fileName;
-		if (args.length > 0) {
-			fileName = args[0];
-		} else {
-			try (var scanner = new Scanner(System.in)) {
-				fileName = scanner.nextLine();
-			}
-		}
-		return fileName;
-	}
 
 	public static void main(String[] args) {
 		var fileName = getFileName(args);
@@ -31,10 +20,7 @@ public class SparkCoreApp {
 		var sContext = scApp.getSparkContext1();
 		JavaRDD<String> plainRDD = sContext.textFile(scApp.fileName, 0);
 		scApp.countLogLevels(plainRDD);
-		try (var scanner = new Scanner(System.in)) {
-			scanner.nextLine();
-		}
-		
+		waitForUserInput();
 
 	}
 
@@ -45,7 +31,6 @@ public class SparkCoreApp {
 	}
 
 	public void countLogLevels(JavaRDD<String> plainRDD) {
-		
 
 		JavaRDD<String> words = plainRDD.map(v1 -> v1.split(",")[0]);
 		System.out.println("sContext no Of Partitions::" + plainRDD.getNumPartitions());
