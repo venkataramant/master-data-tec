@@ -1,0 +1,22 @@
+{
+	"type": "record",
+	"name": "User",
+	"fields": [
+		{
+			"name": "rollNumber",
+			"type": "int"
+		},
+		{
+			"name": "firstName",
+			"type": "string"
+		},
+		{
+			"name": "GPA",
+			"type": "double"
+		},
+		{
+			"name": "active",
+			"type": "boolean"
+		}
+	]
+}
