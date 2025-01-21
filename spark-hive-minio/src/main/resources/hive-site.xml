@@ -1,0 +1,141 @@
+<configuration>
+    <!-- JDBC Configuration for Metastore -->
+    <property>
+        <name>javax.jdo.option.ConnectionURL</name>
+        <value>jdbc:mysql://mysql.my.local:3306/metastore_db</value>
+    </property>
+    <property>
+        <name>javax.jdo.option.ConnectionDriverName</name>
+        <value>com.mysql.cj.jdbc.Driver</value>
+    </property>
+    <property>
+        <name>javax.jdo.option.ConnectionUserName</name>
+        <value>admin</value>
+    </property>
+    <property>
+        <name>javax.jdo.option.ConnectionPassword</name>
+        <value>admiN123Pass</value>
+    </property>
+    
+    <!-- HiveServer2 Configuration -->
+    <property>
+        <name>hive.server2.thrift.port</name>
+        <value>10000</value>
+    </property>
+    <property>
+        <name>hive.server2.thrift.http.port</name>
+        <value>10001</value>
+    </property>
+    <property>
+        <name>hive.server2.webui.port</name>
+        <value>10002</value>
+    </property>
+    <property>
+        <name>hive.server2.thrift.bind.host</name>
+        <value>0.0.0.0</value>
+    </property>
+    <property>
+        <name>hive.server2.thrift.max.worker.threads</name>
+        <value>300</value> <!-- Adjust based on your requirements -->
+    </property>
+    <property>
+        <name>hive.server2.thrift.max.worker.threads</name>
+        <value>5</value> <!-- Adjust based on your requirements -->
+    </property>
+    <property>
+        <name>hive.server2.historic.operation.log.enabled</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>hive.server2.webui.max.historic.queries</name>
+        <value>5</value>
+    </property>
+
+    <!-- S3A Configuration for MinIO -->
+    <property>
+        <name>fs.s3a.endpoint</name>
+        <value>http://minio.my.local:9000</value>
+    </property>
+    <property>
+        <name>fs.s3a.aws.credentials.provider</name>
+        <value>org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider</value>
+    </property>
+    <property>
+        <name>fs.s3a.access.key</name>
+        <value>minio_access_key</value>
+    </property>
+    <property>
+        <name>fs.s3a.secret.key</name>
+        <value>minio_secret_key</value>
+    </property>
+    <property>
+        <name>fs.s3a.path.style.access</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>fs.s3a.impl</name>
+        <value>org.apache.hadoop.fs.s3a.S3AFileSystem</value>
+    </property>
+    <property>
+        <name>fs.s3a.connection.ssl.enabled</name>
+        <value>false</value>
+    </property>
+    <property>
+        <name>fs.defaultFS</name>
+        <value>s3a://minio.my.local:9000/hive</value>
+    </property>
+    <property>
+        <name>fs.s3a.impl</name>
+        <value>org.apache.hadoop.fs.s3a.S3AFileSystem</value>
+    </property>
+    <property>
+        <name>fs.s3a.connection.timeout</name>
+        <value>65</value>
+    </property>
+    <property>
+        <name>fs.s3a.connection.timeout</name>
+        <value>65</value>
+    </property>
+    <property>
+        <name>fs.s3a.connection.establish.timeout</name>
+        <value>66</value>
+    </property>
+    <property>
+        <name>fs.s3a.connection.maximum</name>
+        <value>60</value>
+    </property>
+    <property>
+        <name>fs.s3a.attempts.maximum</name>
+        <value>61</value>
+    </property>
+
+    
+
+
+
+    
+    <!-- Warehouse Directory -->
+    <property>
+        <name>hive.metastore.warehouse.dir</name>
+        <value>s3a:///hive/warehouse</value>
+    </property>
+<!--     <property>
+        <name>hive.aux.jars.path</name>
+        <value>/opt/hive/hive_aux_jars/*</value>
+    </property> -->
+    <property>
+        <name>hive.sql.extensions</name>
+        <value>org.apache.iceberg.mr.hive.HiveIcebergStorageHandler</value>
+    </property>
+    <property>
+        <name>iceberg.engine.hive.enabled</name>
+        <value>true</value>
+    </property>
+
+    <property>
+        <name>hive.execution.engine</name>
+        <value>tez</value> <!-- or tez if you are using tez -->
+    </property>
+
+
+</configuration>
