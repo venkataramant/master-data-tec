@@ -1,6 +1,6 @@
 {
 	"type": "record",
-	"name": "User",
+	"name": "Student",
 	"fields": [
 		{
 			"name": "rollNumber",

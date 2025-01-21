@@ -21,7 +21,7 @@ public class MyParquetWriter {
 
 	public static void main(String... args) {
 		try {
-			Schema userSchema = getSchema("src/main/resources/UserAvroSchema.json");
+			Schema userSchema = getSchema("src/main/resources/StudentAvroSchema.json");
 			System.out.println(userSchema);
 			String nameNodeURL = args[0];
 			String usersParquetFileName = args[1];
@@ -36,7 +36,7 @@ public class MyParquetWriter {
 			Random random = new Random();
 			for (int i = 0; i < 5; i++) {
 				GenericRecord user = new GenericData.Record(userSchema);
-				user.put("firstName", "name" + i);
+				user.put("firstName", "student" + i);
 				user.put("rollNumber", i);
 				user.put("GPA", random.nextDouble(5));
 				user.put("active", random.nextInt(2) == 0 ? Boolean.FALSE : Boolean.TRUE);
